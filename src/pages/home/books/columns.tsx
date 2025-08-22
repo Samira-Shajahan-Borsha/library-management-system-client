@@ -19,7 +19,9 @@ export interface IBook {
   available: boolean;
 }
 
-export const columns: ColumnDef<IBook>[] = [
+export const getColumns = (
+  handleAlertModal: (book: IBook) => void
+): ColumnDef<IBook>[] => [
   {
     accessorKey: "title",
     header: "Title",
@@ -78,7 +80,7 @@ export const columns: ColumnDef<IBook>[] = [
     header: "Actions",
     cell: ({ row }) => {
       const book = row.original;
-      console.log(book);
+      //   console.log(book);
 
       return (
         <div className="flex items-center gap-2">
@@ -96,6 +98,7 @@ export const columns: ColumnDef<IBook>[] = [
             size="icon"
             aria-label={`Delete ${book.title}`}
             title="Delete"
+            onClick={() => handleAlertModal(book)}
           >
             <Trash2 size={16} />
           </Button>
