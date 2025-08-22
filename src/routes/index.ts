@@ -1,4 +1,4 @@
-import Layout from "@/components/layout/layout";
+import Layout from "@/layout/Layout";
 import HomePage from "@/pages/home/HomePage";
 import { createBrowserRouter } from "react-router";
 
@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: HomePage,
-      },
+      }
     ],
   },
 ]);
