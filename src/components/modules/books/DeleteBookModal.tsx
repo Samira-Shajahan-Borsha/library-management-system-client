@@ -8,8 +8,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import type { IBook } from "@/pages/home/books/columns";
 import { useDeleteBookMutation } from "@/redux/api/bookApi";
+import type { IBook } from "@/types";
 import { toast } from "sonner";
 
 interface DeleteBookModalProps {
@@ -26,7 +26,6 @@ const DeleteBookModal: React.FC<DeleteBookModalProps> = ({
   const [deleteBook, { isLoading }] = useDeleteBookMutation();
 
   const handleDelete = async (book: IBook) => {
-    console.log(book, "BookId from alert modal");
     const res = await deleteBook(book?._id);
     if (res?.data?.success) {
       toast.success(`${book?.title} deleted successfully`);
@@ -51,7 +50,7 @@ const DeleteBookModal: React.FC<DeleteBookModalProps> = ({
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
-            onClick={() => handleDelete(book)}
+            onClick={() => handleDelete(book as IBook)}
             className="bg-red-700 hover:bg-red-700"
           >
             {isLoading ? "Deleting..." : "Delete"}

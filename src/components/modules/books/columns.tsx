@@ -2,22 +2,7 @@ import { type ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { Pencil, Trash2, BookOpen } from "lucide-react";
 import { Link } from "react-router";
-
-export interface IBook {
-  _id: string;
-  title: string;
-  author: string;
-  genre:
-    | "FICTION"
-    | "NON_FICTION"
-    | "SCIENCE"
-    | "HISTORY"
-    | "BIOGRAPHY"
-    | "FANTASY";
-  isbn: string;
-  copies: number;
-  available: boolean;
-}
+import type { IBook } from "@/types";
 
 export const getColumns = (
   handleAlertModal: (book: IBook) => void

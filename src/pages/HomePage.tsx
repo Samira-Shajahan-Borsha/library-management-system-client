@@ -1,8 +1,9 @@
 import { useGetAllBooksQuery } from "@/redux/api/bookApi";
-import { DataTable } from "./books/data-table";
-import { getColumns, type IBook } from "./books/columns";
 import { useState } from "react";
 import DeleteBookModal from "@/components/modules/books/DeleteBookModal";
+import type { IBook } from "@/types";
+import { DataTable } from "@/components/modules/books/data-table";
+import { getColumns } from "@/components/modules/books/columns";
 
 const HomePage = () => {
   const [isOpenDeleteAlertModal, setIsOpenDeleteAlertModal] =
@@ -14,7 +15,6 @@ const HomePage = () => {
   // console.log({ isLoading, data });
 
   const handleAlertModal = (book: IBook) => {
-    console.log(book, "from home patge");
     setBook(book);
     setIsOpenDeleteAlertModal(!isOpenDeleteAlertModal);
   };
