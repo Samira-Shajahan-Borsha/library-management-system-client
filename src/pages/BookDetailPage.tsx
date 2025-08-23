@@ -47,58 +47,79 @@ const BookDetailPage = () => {
         </div>
       </div>
 
-      <section className="mt-10 space-y-8">
-        <p className="text-gray-700 text-base sm:text-lg md:text-xl leading-relaxed">
-          {description}
-        </p>
-
-        <div className="flex flex-col sm:flex-row sm:space-x-8 space-y-4 sm:space-y-0">
-          <div className="flex-1">
-            <p className="text-gray-500 text-sm font-medium">Author</p>
-            <p className="text-gray-800 font-semibold mt-1">{author}</p>
-          </div>
-
-          <div className="flex-1">
-            <p className="text-gray-500 text-sm font-medium">Genre</p>
-            <p className="text-gray-800 font-semibold mt-1">
-              {genre?.charAt(0) + genre?.slice(1)?.toLowerCase()}
+      <section className="mt-10">
+        <div className="flex flex-col  gap-8">
+          <div className="flex-1 min-w-0">
+            <h2 className="sr-only">Description</h2>
+            <p className="text-gray-800 text-base sm:text-lg md:text-lg leading-relaxed">
+              <span className="font-medium">Description:</span> {description}
             </p>
           </div>
 
-          <div className="flex-1">
-            <p className="text-gray-500 text-sm font-medium">ISBN</p>
-            <p className="text-gray-800 font-semibold mt-1">{isbn}</p>
-          </div>
-        </div>
+          <aside className="w-full md:w-80 flex-shrink-0">
+            <div className="rounded-lg bg-gray-50 p-4">
+              <div className="space-y-3">
+                <div>
+                  <p className="text-xs text-gray-500">Author</p>
+                  <p className="text-sm font-semibold text-gray-800 mt-1 truncate">
+                    {author}
+                  </p>
+                </div>
 
-        <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-6 mt-2">
-          <div
-            className={`inline-flex self-start items-center px-4 py-2 rounded-full font-medium text-sm sm:text-base ${
-              available && copies > 0
-                ? "bg-green-50 text-green-800"
-                : "bg-red-50 text-red-800"
-            }`}
-            role="status"
-            aria-live="polite"
-          >
-            {available && copies > 0 ? "Available" : "Not Available"}
-          </div>
+                <div>
+                  <p className="text-xs text-gray-500">Genre</p>
+                  <p className="text-sm font-semibold text-gray-800 mt-1">
+                    {genre?.charAt(0) + genre?.slice(1)?.toLowerCase()}
+                  </p>
+                </div>
 
-          <div className="text-gray-700 font-medium text-sm sm:text-base self-start">
-            Copies: {copies}
-          </div>
-        </div>
+                <div>
+                  <p className="text-xs text-gray-500">ISBN</p>
+                  <p className="text-sm font-semibold text-gray-800 mt-1 break-all">
+                    {isbn}
+                  </p>
+                </div>
+              </div>
 
-        <div className="mt-6">
-          {available && copies > 0 ? (
-            <Button variant="default" className="cursor-pointer">
-              Borrow Book
-            </Button>
-          ) : (
-            <Button disabled variant="default">
-              Borrow Unavailable
-            </Button>
-          )}
+              <hr className="my-4 border-t border-gray-200" />
+
+              <div className="flex flex-col  gap-3">
+                <div className="flex items-center gap-3">
+                  <span
+                    className={`inline-flex self-start items-center px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap ${
+                      available && copies > 0
+                        ? "bg-green-50 text-green-800"
+                        : "bg-red-50 text-red-800"
+                    }`}
+                    role="status"
+                    aria-live="polite"
+                  >
+                    {available && copies > 0 ? "Available" : "Not Available"}
+                  </span>
+
+                  <div className="text-sm text-gray-700 font-medium">
+                    Copies: {copies}
+                  </div>
+                </div>
+
+                <div className="w-full sm:w-auto">
+                  {available && copies > 0 ? (
+                    <Button variant="default">Borrow Book</Button>
+                  ) : (
+                    <Button disabled variant="default">
+                      Borrow Unavailable
+                    </Button>
+                  )}
+                </div>
+              </div>
+
+              {/* optional tiny help text */}
+              <p className="mt-3 text-xs text-gray-500">
+                If you borrow this book, your number of borrowed items will be
+                updated.
+              </p>
+            </div>
+          </aside>
         </div>
       </section>
     </main>

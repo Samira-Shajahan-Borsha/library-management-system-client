@@ -13,6 +13,13 @@ export const bookApi = createApi({
       query: (id) => `/books/${id}`,
       providesTags: ["book"],
     }),
+    addBook: build.mutation({
+      query: () => ({
+        url: "/books",
+        method: "POST",
+      }),
+      invalidatesTags: ["book"],
+    }),
     deleteBook: build.mutation({
       query: (id) => ({
         url: `/books/${id}`,
