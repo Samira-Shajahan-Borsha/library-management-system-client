@@ -18,7 +18,7 @@ interface DeleteBookModalProps {
   setIsOpenDeleteAlertModal: (value: boolean) => void;
 }
 
-const DeleteBookModal: React.FC<DeleteBookModalProps> = ({
+const DeleteBookAlertModal: React.FC<DeleteBookModalProps> = ({
   book,
   isOpenDeleteAlertModal,
   setIsOpenDeleteAlertModal,
@@ -39,10 +39,10 @@ const DeleteBookModal: React.FC<DeleteBookModalProps> = ({
     >
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>
+          <AlertDialogTitle className="text-start">
             {`Are you sure you want to delete "${book?.title}" book?`}
           </AlertDialogTitle>
-          <AlertDialogDescription>
+          <AlertDialogDescription className="text-start">
             This action cannot be undone. This will permanently delete your data
             from our server.
           </AlertDialogDescription>
@@ -61,4 +61,4 @@ const DeleteBookModal: React.FC<DeleteBookModalProps> = ({
   );
 };
 
-export default DeleteBookModal;
+export default DeleteBookAlertModal;

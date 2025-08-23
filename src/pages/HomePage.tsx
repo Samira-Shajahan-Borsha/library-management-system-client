@@ -1,9 +1,9 @@
-import { useGetAllBooksQuery } from "@/redux/api/bookApi";
-import { useState } from "react";
-import DeleteBookModal from "@/components/modules/books/DeleteBookModal";
-import type { IBook } from "@/types";
-import { DataTable } from "@/components/modules/books/data-table";
 import { getColumns } from "@/components/modules/books/columns";
+import { DataTable } from "@/components/modules/books/data-table";
+import DeleteBookAlertModal from "@/components/modules/books/DeleteBookAlertModal";
+import { useGetAllBooksQuery } from "@/redux/api/bookApi";
+import type { IBook } from "@/types";
+import { useState } from "react";
 
 const HomePage = () => {
   const [isOpenDeleteAlertModal, setIsOpenDeleteAlertModal] =
@@ -25,7 +25,7 @@ const HomePage = () => {
   return (
     <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       {isOpenDeleteAlertModal && (
-        <DeleteBookModal
+        <DeleteBookAlertModal
           book={book}
           isOpenDeleteAlertModal={isOpenDeleteAlertModal}
           setIsOpenDeleteAlertModal={setIsOpenDeleteAlertModal}

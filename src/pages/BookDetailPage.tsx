@@ -56,7 +56,7 @@ const BookDetailPage = () => {
             </p>
           </div>
 
-          <aside className="w-full md:w-80 flex-shrink-0">
+          <aside className="w-full lg:w-96 flex-shrink-0">
             <div className="rounded-lg bg-gray-50 p-4">
               <div className="space-y-3">
                 <div>
