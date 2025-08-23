@@ -5,7 +5,8 @@ import { Link } from "react-router";
 import type { IBook } from "@/types";
 
 export const getColumns = (
-  handleAlertModal: (book: IBook) => void
+  handleAlertModal: (book: IBook) => void,
+  handleEditModal: (book: IBook) => void
 ): ColumnDef<IBook>[] => [
   {
     accessorKey: "title",
@@ -56,7 +57,7 @@ export const getColumns = (
       return row.original.available ? (
         <span>Available</span>
       ) : (
-        <span className="text-red-500"> Not Available</span>
+        <span className="text-red-500"> Unavailable</span>
       );
     },
   },
@@ -74,6 +75,7 @@ export const getColumns = (
             size="icon"
             aria-label={`Edit ${book.title}`}
             title="Edit"
+            onClick={() => handleEditModal(book)}
           >
             <Pencil size={16} />
           </Button>
