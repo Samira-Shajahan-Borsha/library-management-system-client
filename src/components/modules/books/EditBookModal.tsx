@@ -95,8 +95,8 @@ const EditBookModal: React.FC<EditBookModalProps> = ({
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Edit "{book?.title}"</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-start">Edit "{book?.title}"</DialogTitle>
+            <DialogDescription className="text-start">
               Update the details of this book, such as the title, author, genre,
               ISBN, description, and the number of available copies. Click
               "Save" when you’re done to apply the changes.
