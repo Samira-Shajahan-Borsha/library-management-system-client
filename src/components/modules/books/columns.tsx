@@ -3,10 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Pencil, Trash2, BookOpen } from "lucide-react";
 import { Link } from "react-router";
 import type { IBook } from "@/types";
+import { toast } from "sonner";
 
 export const getColumns = (
   handleAlertModal: (book: IBook) => void,
-  handleEditModal: (book: IBook) => void
+  handleEditModal: (book: IBook) => void,
+  handleBorrowBook: (book: IBook) => void
 ): ColumnDef<IBook>[] => [
   {
     accessorKey: "title",
@@ -95,6 +97,15 @@ export const getColumns = (
             size="icon"
             aria-label={`Borrow ${book.title}`}
             title="Borrow"
+            onClick={() => {
+              if (book?.copies > 0 && book?.available) {
+                handleBorrowBook(book);
+              } else {
+                toast.error(`${book.title} is not available to borrow`, {
+                  id: 1,
+                });
+              }
+            }}
           >
             <BookOpen size={16} />
           </Button>

@@ -89,118 +89,99 @@ const EditBookModal: React.FC<EditBookModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <form>
-        <DialogTrigger asChild>
-          <Button variant="outline">Open Dialog</Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle className="text-start">Edit "{book?.title}"</DialogTitle>
-            <DialogDescription className="text-start">
-              Update the details of this book, such as the title, author, genre,
-              ISBN, description, and the number of available copies. Click
-              "Save" when you’re done to apply the changes.
-            </DialogDescription>
-          </DialogHeader>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-6"
-              noValidate
-            >
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <DialogContent className="sm:max-w-[480px]">
+        <DialogHeader>
+          <DialogTitle className="text-start">Edit "{book?.title}"</DialogTitle>
+          <DialogDescription className="text-start">
+            Update the details of this book, such as the title, author, genre,
+            ISBN, description, and the number of available copies. Click "Save"
+            when you’re done to apply the changes.
+          </DialogDescription>
+        </DialogHeader>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-6"
+            noValidate
+          >
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <FormField
+                control={form.control}
+                name="title"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Title</FormLabel>
+                    <FormControl>
+                      <Input placeholder="The Great Adventure" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="author"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Author</FormLabel>
+                    <FormControl>
+                      <Input placeholder="John Smith" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="genre"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Genre</FormLabel>
+                    <FormControl>
+                      <Select
+                        value={field.value}
+                        onValueChange={(value) => field.onChange(value)}
+                      >
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Select genre" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="FICTION">Fiction</SelectItem>
+                          <SelectItem value="NON_FICTION">
+                            Non-fiction
+                          </SelectItem>
+                          <SelectItem value="SCIENCE">Science</SelectItem>
+                          <SelectItem value="HISTORY">History</SelectItem>
+                          <SelectItem value="BIOGRAPHY">Biography</SelectItem>
+                          <SelectItem value="FANTASY">Fantasy</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                 <FormField
                   control={form.control}
-                  name="title"
+                  name="copies"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Title</FormLabel>
+                    <FormItem className="flex-1">
+                      <FormLabel>Copies</FormLabel>
                       <FormControl>
-                        <Input placeholder="The Great Adventure" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="author"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Author</FormLabel>
-                      <FormControl>
-                        <Input placeholder="John Smith" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="genre"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Genre</FormLabel>
-                      <FormControl>
-                        <Select
-                          value={field.value}
-                          onValueChange={(value) => field.onChange(value)}
-                        >
-                          <SelectTrigger className="w-full">
-                            <SelectValue placeholder="Select genre" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="FICTION">Fiction</SelectItem>
-                            <SelectItem value="NON_FICTION">
-                              Non-fiction
-                            </SelectItem>
-                            <SelectItem value="SCIENCE">Science</SelectItem>
-                            <SelectItem value="HISTORY">History</SelectItem>
-                            <SelectItem value="BIOGRAPHY">Biography</SelectItem>
-                            <SelectItem value="FANTASY">Fantasy</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                  <FormField
-                    control={form.control}
-                    name="copies"
-                    render={({ field }) => (
-                      <FormItem className="flex-1">
-                        <FormLabel>Copies</FormLabel>
-                        <FormControl>
-                          <Input
-                            type="number"
-                            min={1}
-                            {...field}
-                            value={field.value ?? ""}
-                            onChange={(e) =>
-                              field.onChange(Number(e.target.value))
-                            }
-                            inputMode="numeric"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-
-                <FormField
-                  control={form.control}
-                  name="isbn"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>ISBN</FormLabel>
-                      <FormControl>
-                        <Input placeholder="9781234567890" {...field} />
+                        <Input
+                          type="number"
+                          min={1}
+                          {...field}
+                          value={field.value ?? ""}
+                          onChange={(e) =>
+                            field.onChange(Number(e.target.value))
+                          }
+                          inputMode="numeric"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -210,35 +191,49 @@ const EditBookModal: React.FC<EditBookModalProps> = ({
 
               <FormField
                 control={form.control}
-                name="description"
+                name="isbn"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Description</FormLabel>
+                    <FormLabel>ISBN</FormLabel>
                     <FormControl>
-                      <Textarea
-                        placeholder="Short description (optional)"
-                        className="min-h-[120px]"
-                        {...field}
-                      />
+                      <Input placeholder="9781234567890" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <DialogFooter>
-                <div className="flex gap-x-3 items-center justify-end">
-                  <DialogClose asChild>
-                    <Button variant="outline">Cancel</Button>
-                  </DialogClose>
-                  <Button type="submit" disabled={isLoading}>
-                    {isLoading ? "Saving" : "Save changes"}
-                  </Button>
-                </div>
-              </DialogFooter>
-            </form>
-          </Form>
-        </DialogContent>
-      </form>
+            </div>
+
+            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Description</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Short description (optional)"
+                      className="min-h-[120px]"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <DialogFooter>
+              <div className="flex gap-x-3 items-center justify-end">
+                <DialogClose asChild>
+                  <Button variant="outline">Cancel</Button>
+                </DialogClose>
+                <Button type="submit" disabled={isLoading}>
+                  {isLoading ? "Saving" : "Save changes"}
+                </Button>
+              </div>
+            </DialogFooter>
+          </form>
+        </Form>
+      </DialogContent>
     </Dialog>
   );
 };
