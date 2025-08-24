@@ -3,6 +3,7 @@ import { DataTable } from "@/components/modules/books/data-table";
 import DeleteBookAlertModal from "@/components/modules/books/DeleteBookAlertModal";
 import EditBookModal from "@/components/modules/books/EditBookModal";
 import BorrowModal from "@/components/modules/borrow/BorrowModal";
+import Spinner from "@/components/shared/Spinner";
 import { useGetAllBooksQuery } from "@/redux/api/bookApi";
 import type { IBook } from "@/types";
 import { useState } from "react";
@@ -14,8 +15,6 @@ const HomePage = () => {
   const [book, setBook] = useState<IBook | null>(null);
 
   const { isLoading, data } = useGetAllBooksQuery(undefined);
-
-  // console.log({ isLoading, data });
 
   const handleAlertModal = (book: IBook) => {
     setBook(book);
@@ -33,7 +32,7 @@ const HomePage = () => {
   };
 
   if (isLoading) {
-    return <div>Loading....</div>;
+    return <Spinner isLoading={isLoading} />;
   }
   return (
     <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

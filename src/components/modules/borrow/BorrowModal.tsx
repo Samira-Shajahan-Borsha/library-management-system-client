@@ -33,6 +33,7 @@ import {
 import type { IBook } from "@/types";
 import { toast } from "sonner";
 import { useBorrowBookMutation } from "@/redux/api/bookApi";
+import { useNavigate } from "react-router";
 
 interface BorrowModalProps {
   book: IBook | null;
@@ -67,6 +68,7 @@ const BorrowModal: React.FC<BorrowModalProps> = ({
 }) => {
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [borrowBook, { isLoading }] = useBorrowBookMutation();
+  const navigate = useNavigate();
 
   const form = useForm<z.infer<ReturnType<typeof formSchema>>>({
     resolver: zodResolver(formSchema(book?.copies ?? 1)),
@@ -86,6 +88,7 @@ const BorrowModal: React.FC<BorrowModalProps> = ({
 
       if (res?.data?.success) {
         setIsOpenBorrowModal(false);
+        navigate("/borrow-summary");
         toast.success(`You have successfully borrowed "${book?.title}"`);
       }
     } catch (error) {
