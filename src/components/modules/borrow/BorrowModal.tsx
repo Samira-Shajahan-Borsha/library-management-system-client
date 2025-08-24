@@ -95,14 +95,12 @@ const BorrowModal: React.FC<BorrowModalProps> = ({
 
   return (
     <Dialog open={isOpenBorrowModal} onOpenChange={setIsOpenBorrowModal}>
-      <DialogTrigger asChild>
-        <Button variant="outline">Borrow Book</Button>
-      </DialogTrigger>
-
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Borrow "{book?.title}"</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className="text-start">
+            Borrow "{book?.title}"
+          </DialogTitle>
+          <DialogDescription className="text-start">
             Enter the quantity you want to borrow and select a return date.
           </DialogDescription>
         </DialogHeader>
