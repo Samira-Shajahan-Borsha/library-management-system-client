@@ -29,7 +29,6 @@ const HomePage = () => {
 
   const handleBorrowBook = (book: IBook) => {
     setBook(book);
-    console.log(book, "book from borrow");
     setIsOpenBorrowModal(!isOpenBorrowModal);
   };
 

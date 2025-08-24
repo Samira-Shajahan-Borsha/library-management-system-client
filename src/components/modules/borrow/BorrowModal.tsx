@@ -31,8 +31,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import type { IBook } from "@/types";
-import { useBorrowBookMutation } from "@/redux/api/borrowApi";
 import { toast } from "sonner";
+import { useBorrowBookMutation } from "@/redux/api/bookApi";
 
 interface BorrowModalProps {
   book: IBook | null;
@@ -83,7 +83,6 @@ const BorrowModal: React.FC<BorrowModalProps> = ({
         ...(values as { quntity: number; dueDate: Date }),
         book: book?._id,
       });
-      console.log(res, "resssss");
 
       if (res?.data?.success) {
         setIsOpenBorrowModal(false);
