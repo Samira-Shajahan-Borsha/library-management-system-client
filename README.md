@@ -59,13 +59,6 @@ This frontend application allows users to **manage books, borrow books, and view
 - **Clear Navigation** and simple forms.
 - **Toast Notification** for success message.
 
-### 🎁 Bonus Features (Implemented)
-
-- ✅ Optimistic UI updates
-- ✅ Toast notifications
-- ✅ Responsive layout
-- ✅ Type-safe forms
-
 ---
 
 ## Tech Stack
@@ -88,36 +81,39 @@ This frontend application allows users to **manage books, borrow books, and view
 
 ---
 
-## Getting Started
+### Installation
 
-### 1. Clone the Repository
+1. Clone the repository:
 
-```bash
-git clone https://github.com/Samira-Shajahan-Borsha/library-management-system-client.git
-cd library-management-frontend
-```
-````
+   ```bash
+   git clone https://github.com/Samira-Shajahan-Borsha/library-management-system-client.git
+   ```
 
-### 2. Install Dependencies
+2. Navigate to the project directory:
 
-```bash
-npm install
-# or
-yarn install
-```
+   ```bash
+   cd library-management-system-client
+   ```
 
-### 3. Run the App
+3. Install dependencies:
 
-```bash
-npm run dev
-```
+   ```bash
+   npm install
+   ```
 
-Frontend will be available at: **http://localhost:5173** (default Vite port).
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
+The application should now be running locally on `http://localhost:5173`.
 
-## 🌐 Live Demo
+---
+
+## Live Demo
 
 🔗 [Frontend Live Link](#)  
 🔗 [Backend Live Link](#https://library-management-system-server-xi.vercel.app/)
 
 ---
+````
