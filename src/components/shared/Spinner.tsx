@@ -7,8 +7,11 @@ const override: CSSProperties = {
   borderColor: "red",
 };
 
+type SpinnerProps = {
+  isLoading: boolean;
+};
 
-const Spinner = ({ isLoading }) => {
+const Spinner: React.FC<SpinnerProps> = ({ isLoading }) => {
   return (
     <div className="flex justify-center items-center h-[60vh]">
       <BeatLoader

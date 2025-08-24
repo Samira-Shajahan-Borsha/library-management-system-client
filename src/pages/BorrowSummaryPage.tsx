@@ -6,8 +6,6 @@ import { Link } from "react-router";
 const BorrowSummaryPage = () => {
   const { data, isLoading, isError } = useGetBorrowSummaryQuery(undefined);
 
-  console.log(data);
-
   if (isLoading) {
     return <Spinner isLoading={isLoading} />;
   }
