@@ -58,7 +58,7 @@ const HomePage = () => {
         />
       )}
       <h1 className="text-center my-10 font-semibold text-lg lg:text-2xl underline underline-offset-4">
-        Discover & Borrow With Ease
+        Library Management System
       </h1>
       <DataTable
         columns={getColumns(
