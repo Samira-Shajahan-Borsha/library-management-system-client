@@ -1,4 +1,3 @@
-````markdown
 # Library Management System
 
 A minimal **Library Management System** built with **React, Redux Toolkit Query (RTK Query), and TypeScript**.  
@@ -116,4 +115,3 @@ The application should now be running locally on `http://localhost:5173`.
 🔗 [Backend Live Link](#https://library-management-system-server-xi.vercel.app/)
 
 ---
-````
