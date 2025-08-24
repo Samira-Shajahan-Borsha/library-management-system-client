@@ -1,6 +1,6 @@
 import { type ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
-import { Pencil, Trash2, BookOpen } from "lucide-react";
+import { Pencil, Trash2, BookOpen, Eye } from "lucide-react";
 import { Link } from "react-router";
 import type { IBook } from "@/types";
 import { toast } from "sonner";
@@ -14,8 +14,8 @@ export const getColumns = (
     accessorKey: "title",
     header: "Title",
     cell: ({ row }) => (
-      <Link to={`/books/${row.original._id}`}>
-        <span className="font-medium cursor-pointer hover:text-gray-700">
+      <Link to={`/book/${row.original._id}`}>
+        <span className="font-medium cursor-pointer hover:text-indigo-600">
           {row.original.title}
         </span>
       </Link>
@@ -72,6 +72,17 @@ export const getColumns = (
 
       return (
         <div className="flex items-center gap-2">
+          <Link to={`/book/${book._id}`}>
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label={`View ${book.title}`}
+              title="View"
+            >
+              <Eye size={16} />
+            </Button>
+          </Link>
+
           <Button
             variant="ghost"
             size="icon"
