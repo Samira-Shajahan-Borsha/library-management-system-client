@@ -109,9 +109,11 @@ The application should now be running locally on `http://localhost:5173`.
 
 ---
 
-## Live Demo
+---
 
-🔗 [Frontend Live Link](#)  
-🔗 [Backend Live Link](#https://library-management-system-server-xi.vercel.app/)
+## Links
+
+- **GitHub Repository**: [GitHub Link](https://github.com/Samira-Shajahan-Borsha/library-management-system-client)
+- **Live Deployment**: [Live Link](#)
 
 ---
